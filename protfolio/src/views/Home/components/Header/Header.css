@@ -1,0 +1,50 @@
+.header {
+  padding-top: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.header img {
+  object-fit: contain;
+  height: auto;
+}
+.header h1 {
+  margin: 33px 0;
+  font-size: 2.5rem;
+  line-height: 60px;
+  width: 65%;
+}
+.header p {
+  width: 45%;
+  margin-bottom: 35px;
+  font-size: 20px;
+  opacity: 0.9;
+  line-height: 30px;
+}
+.header button {
+  margin-bottom: 200px;
+}
+@media (max-width: 950px) {
+  .header p {
+    width: 76%;
+  }
+}
+@media (max-width: 750px) {
+  .header img {
+    width: 100%;
+  }
+  .header h1 {
+    font-size: 3rem;
+    width: 100%;
+    line-height: 70px;
+  }
+  .header p {
+    width: 94%;
+    font-size: 25px;
+    letter-spacing: 2px;
+  }
+  .header button {
+    margin-bottom: 300px;
+  }
+}

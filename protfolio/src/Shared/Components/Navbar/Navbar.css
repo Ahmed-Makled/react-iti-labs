@@ -1,0 +1,18 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+}
+.links a {
+  padding: 0 29px;
+  opacity: 0.9;
+}
+.links a:last-child {
+  padding-right: 0;
+}
+@media (max-width: 750px) {
+  .links a {
+    font-size: 23px;
+  }
+}
