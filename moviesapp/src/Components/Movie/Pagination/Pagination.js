@@ -1,28 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
+import Pagination from 'react-bootstrap/Pagination'
+import PageItem from 'react-bootstrap/PageItem'
 
 
-export default function MyPagination({ moviesPrevPage, totalMovies, paginate }) {
-  const pageNumbers = [];
+export default function MyPagination({ pageCount,handlePageChange }) {
+ 
 
-  for (let i = 1; i <= Math.ceil(totalMovies / moviesPrevPage); i++) {
-    pageNumbers.push(i);
-  }
-
-  
   return (
-   <nav>
-      <ul className='pagination'>
-        {pageNumbers.map((number) => (        
-            
-          <li key={number} className='page-item'>
-            <Link onClick={() => paginate(number)}  className='page-link'>
-              {number}
-            </Link>
-          </li>
+    <ReactPaginate
+      breakLabel="..."
+      nextLabel=">"
+      previousLabel="<"
+      pageCount={pageCount}
+      marginPagesDisplayed={2}
+      onPageChange={handlePageChange}
+      containerClassName={'pagination'}
+      previousLinkClassName={'page-link'}
+      breakClassName={'page-link'}
+      nextLinkClassName={'page-link'}
+      pageClassName={'page-link'}
+      disabledClassNae={'disabled'}
+      activeClassName={'active'}
 
-        ))}
-      </ul>
-    </nav>
+    />
+
   );
 }
