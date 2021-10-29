@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router';
 import axiosInstance from '../../../Network/axiosConfig';
 import "./MovieDetails.css"
+
 export default function MovieDetails() {
     const [movie, setMovie] = useState([]);
     const [genres, setGenres] = useState([]);
 
     const params = useParams();
 
-    const url = `/${params.id}?api_key=53d39522fa2be9f28a94db487d6d3fd2`
+    const url = `/movie/${params.id}?api_key=53d39522fa2be9f28a94db487d6d3fd2`
     const fecthMovies = async () => {
         try {
             const res = await axiosInstance.get(url)

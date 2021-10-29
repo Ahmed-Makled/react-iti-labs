@@ -8,12 +8,8 @@ export default function MovieList({ movies, Loading }) {
 
     return <h2>Loading....</h2>
   }
-
-
-
   return (
     <>
-
       {!Loading ? (
 
         movies.map((movie, index) => (
@@ -24,8 +20,6 @@ export default function MovieList({ movies, Loading }) {
 
         <h2 className="text-white">IsLoading ...</h2>
       )
-
-
 
       }
 

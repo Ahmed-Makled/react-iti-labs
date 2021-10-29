@@ -10,6 +10,7 @@ import MovieDetails from "./Components/Movie/MovieDetails/MovieDetails";
 import NavbarComponent from "./Shared/Navbar/Navbar";
 import NotFound from "./Shared/NotFound/NotFound";
 import HomeComponent from "./Views/Home/Home";
+import MovieSearch from "./Components/Movie/MovieSearch/MovieSearch";
 
 
 
@@ -22,6 +23,7 @@ function App() {
       <Route path="/" exact component={HomeComponent} />
       <Route path="/movie" exact component={MovieApp} />
       <Route path="/movie/:id" exact component={MovieDetails} />
+      <Route path="/movie/search/:key" exact component={MovieSearch} />
          <Route path="*" exact component={NotFound} />
     </Switch>
   </Router>  );
