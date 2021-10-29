@@ -1,3 +1,12 @@
 .card {
   margin: auto;
 }
+.icon__heart {
+  cursor: pointer;
+}
+.icon__heart svg {
+  color: #dc3545;
+}
+.icon__heart:hover svg {
+  color: rgb(255, 125, 125);
+}

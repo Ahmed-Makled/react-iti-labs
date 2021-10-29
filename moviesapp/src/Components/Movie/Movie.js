@@ -34,11 +34,10 @@ export default function MovieApp() {
 
     <>
      
-
-      <section className="pt-2 text-center">
+     <section className="pt-2 text-center">
         <div className="container">
           <div className="row ">
-            <div className="col-6 m-auto">
+            <div className="col-12 ">
 
               <MyPagination
                 handlePageChange={handlePageChange}
@@ -62,6 +61,8 @@ export default function MovieApp() {
 
         </div>
       </section>
+      
+     
 
     </>
   );

@@ -13,7 +13,7 @@ export default function MyPagination({ pageCount,handlePageChange }) {
       nextLabel=">"
       previousLabel="<"
       pageCount={pageCount}
-      marginPagesDisplayed={2}
+      marginPagesDisplayed={10}
       onPageChange={handlePageChange}
       containerClassName={'pagination'}
       previousLinkClassName={'page-link'}

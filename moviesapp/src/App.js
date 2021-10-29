@@ -11,6 +11,7 @@ import NavbarComponent from "./Shared/Navbar/Navbar";
 import NotFound from "./Shared/NotFound/NotFound";
 import HomeComponent from "./Views/Home/Home";
 import MovieSearch from "./Components/Movie/MovieSearch/MovieSearch";
+import Wishlist from "./Components/Movie/Wishlist/Wishlist";
 
 
 
@@ -24,6 +25,7 @@ function App() {
       <Route path="/movie" exact component={MovieApp} />
       <Route path="/movie/:id" exact component={MovieDetails} />
       <Route path="/movie/search/:key" exact component={MovieSearch} />
+      <Route path="/wishlist" exact component={Wishlist} />
          <Route path="*" exact component={NotFound} />
     </Switch>
   </Router>  );
