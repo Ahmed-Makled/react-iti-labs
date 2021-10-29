@@ -29,7 +29,7 @@ export default function MovieItem({ movies, Loading }) {
               <div class="card-footer border-top-5  d-flex justify-content-between">
                 <small class="card-text ">ReleaseDate: {movie.release_date}</small>
 
-                <Link class="btn btn-outline-secondary btn-sm ">
+                <Link to={`/movie/${movie.id}`} class="btn btn-outline-secondary btn-sm ">
                   View Details
                 </Link>
               </div>

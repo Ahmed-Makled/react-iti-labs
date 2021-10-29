@@ -17,8 +17,7 @@ export default function MovieList() {
     await setMovies(res.data.results);
     await setLoading(false)
     await setPageCount(res.data.total_pages)
-    console.log(res.data);
-    console.log(loading);
+
   }
 
   useEffect(() => {
@@ -33,27 +32,42 @@ export default function MovieList() {
 
     <>
 
-      <section className="pt-2 text-center">
-        <div className="container">
-          <div className="row ">
-            <div className="col-6 m-auto">
 
-              <MyPagination
+    <section className="pt-2 text-center">
+      <div className="container">
+        <div className="row ">
+          <div className="col-6 m-auto">
+
+
+
+          <MyPagination
                 handlePageChange={handlePageChange}
                 pageCount={pageCount}
               />
 
-
-            </div>
-
+         
 
           </div>
 
+
         </div>
-      </section>
+
+      </div>
+    </section> 
+
+    <section className="pt-2">
+      <div className="container">
+        <div className="row">
+
+        <MovieItem movies={movies} loading={loading} />
 
 
-      <MovieItem movies={movies} loading={loading} />
+
+        </div>
+
+      </div>
+    </section>
+
     </>
   );
 }

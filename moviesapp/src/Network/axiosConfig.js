@@ -10,7 +10,7 @@ axiosInstance.interceptors.request.use(
     config.headers = {
       "Content-type": "application/json"
     }
-    console.log("SHOW LOADER");
+    // console.log("SHOW LOADER");
     // Do something before request is sent
     return config;
   },
@@ -23,7 +23,7 @@ axiosInstance.interceptors.request.use(
 // Add a response interceptor
 axiosInstance.interceptors.response.use(
   function (response) {
-    console.log("HIDE LOADER");
+    // console.log("HIDE LOADER");
 
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data

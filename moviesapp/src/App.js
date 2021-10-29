@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import MovieApp from "./Components/Movie/Movie";
+import MovieDetails from "./Components/Movie/MovieDetails/MovieDetails";
 //import Component
 import NavbarComponent from "./Shared/Navbar/Navbar";
 import NotFound from "./Shared/NotFound/NotFound";
@@ -20,6 +21,7 @@ function App() {
     <Switch>
       <Route path="/" exact component={HomeComponent} />
       <Route path="/movie" exact component={MovieApp} />
+      <Route path="/movie/:id" exact component={MovieDetails} />
          <Route path="*" exact component={NotFound} />
     </Switch>
   </Router>  );

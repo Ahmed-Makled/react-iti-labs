@@ -1,5 +1,5 @@
 body {
-  background: #2c3136;
+  background: #0d0d0c;
 }
 .App {
   text-align: center;
@@ -38,4 +38,7 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+.nav-item.active {
+  color: #9ac7fa;
 }
