@@ -11,3 +11,10 @@ export const removeItem = (data) => {
     payload: data,
   };
 };
+
+export const setCounter = (data) => {
+  return {
+    type: "SET_COUNTER",
+    payload: data,
+  };
+};

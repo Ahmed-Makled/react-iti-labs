@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router";
 
-import { updateWishlist, removeItem } from "../../../Store/Action";
+import { setCounter, updateWishlist, removeItem } from "../../../Store/Action";
 import "./MovieItem.css"
 export default function MovieItem({ movie }) {
+  // const movies = useSelector((state) => state.movies);
 
   const History = useHistory();
   const dispatch = useDispatch();
@@ -15,13 +16,15 @@ export default function MovieItem({ movie }) {
   else
     flag = false
 
-  console.log(History)
+  // console.log(History)
 
 
   const addToWishlist = () => {
     // console.log(movie)
+    // dispatch(setCounter(movies + 1))
     dispatch(updateWishlist(movie))
   }
+
   const removeItemFromWishList = index => {
 
     dispatch(removeItem(index)

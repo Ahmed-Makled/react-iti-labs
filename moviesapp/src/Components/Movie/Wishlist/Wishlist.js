@@ -6,11 +6,11 @@ import { removeItem } from "../../../Store/Action";
 export default function Wishlist() {
 
   const _movies = useSelector((state) => state.movies);
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
 
 
 
-  console.log(_movies);
+  // console.log(_movies);
   return (
     <>
       <section className="pt-2">

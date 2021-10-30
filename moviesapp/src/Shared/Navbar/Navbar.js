@@ -14,7 +14,7 @@ export default function NavbarComponent() {
   const [value, setValue] = useState("");
   const history = useHistory();
   useEffect(() => {
-
+    console.log(_movies)
 
   }, [_movies]);
   const handleSubmit = (e) => {
@@ -34,7 +34,7 @@ export default function NavbarComponent() {
           <div class="container-fluid">
             <div class="row align-items-center">
               <div class="col-lg-3 col-sm-4 col-md-4 col-5">
-                <Link to="/" >
+                <Link to="/movie" >
 
                   <span class="logo">MoviesApp</span> </Link> </div>
               <div class="col-lg-6 col-xl-5 col-sm-8 col-md-4 d-none d-md-block">
@@ -50,23 +50,25 @@ export default function NavbarComponent() {
               <div class="col-lg-3 col-xl-4 col-sm-8 col-md-4 col-7">
                 <div class="d-flex justify-content-end">
 
-                  <div class="d-flex align-items-center">
 
-                    <Link to="/wishlist"> <i class="fas fa fa-heart text-white fs-5"></i>
-                    </Link>
+
+                  <Link to="/wishlist" class="d-flex align-items-center">
+                    <i class="fas fa fa-heart text-white fs-5"></i>
                     <span className="badge bg-danger ms-1">{_movies.length}</span>
-
-                  </div>
-
+                  </Link>
 
 
-                  <Link class="nav-link text-white">LOGIN</Link>
+
+
+
+
+                  {/* <Link class="nav-link text-white">LOGIN</Link> */}
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <nav class="navbar navbar-expand-md navbar-main border-bottom text-center">
+        {/* <nav class="navbar navbar-expand-md navbar-main border-bottom text-center">
           <div class="container-fluid">
             <form class="d-md-none my-2">
               <div class="input-group"> <input type="search" name="search" class="form-control" placeholder="Search" required="" />
@@ -82,7 +84,7 @@ export default function NavbarComponent() {
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> */}
       </header>
 
     </>
