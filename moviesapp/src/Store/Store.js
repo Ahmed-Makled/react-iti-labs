@@ -1,10 +1,11 @@
-import { createStore } from "redux";
-import wishlistReducer from "./Reducer";
+import { applyMiddleware, createStore } from "redux";
+import combineReducers from "./Reducers/combineReducer";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
 
-//redux dev tool
-const devTools =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-
-const store = createStore(wishlistReducer, devTools);
+const store = createStore(
+  combineReducers,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 export default store;

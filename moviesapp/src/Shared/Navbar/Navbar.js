@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import {
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from "react-router-dom";
+import { changeLanguage } from '../../Store/Actions/Language';
 
-  Link, useHistory
-} from "react-router-dom";
 import "./Navbar.css"
 export default function NavbarComponent() {
+  const language = useSelector(state => state.language.lang);
+  const dispatch = useDispatch()
 
-
-  const _movies = useSelector((state) => state.movies);
-
-
+  const _movies = useSelector((state) => state.wishlist.movies);
   const [value, setValue] = useState("");
   const history = useHistory();
   useEffect(() => {
-    console.log(_movies)
+    // console.log(_movies)
 
   }, [_movies]);
   const handleSubmit = (e) => {
@@ -23,6 +21,9 @@ export default function NavbarComponent() {
     history.push(`/movie/search/${value}`)
 
   };
+  const changeLang = () => {
+    dispatch(changeLanguage(language === 'en' ? 'ar' : 'en'))
+  }
 
 
 
@@ -49,42 +50,18 @@ export default function NavbarComponent() {
               </div>
               <div class="col-lg-3 col-xl-4 col-sm-8 col-md-4 col-7">
                 <div class="d-flex justify-content-end">
-
-
-
                   <Link to="/wishlist" class="d-flex align-items-center">
                     <i class="fas fa fa-heart text-white fs-5"></i>
                     <span className="badge bg-danger ms-1">{_movies.length}</span>
                   </Link>
+                  <span onClick={changeLang} className=" ps-1 lang">{language}</span>
 
-
-
-
-
-
-                  {/* <Link class="nav-link text-white">LOGIN</Link> */}
                 </div>
               </div>
             </div>
           </div>
         </section>
-        {/* <nav class="navbar navbar-expand-md navbar-main border-bottom text-center">
-          <div class="container-fluid">
-            <form class="d-md-none my-2">
-              <div class="input-group"> <input type="search" name="search" class="form-control" placeholder="Search" required="" />
-                <div class="input-group-append"> <button type="submit" class="btn btn-secondary"> <i class="fa fa-search"></i> </button> </div>
-              </div>
-            </form> <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#dropdown6" aria-expanded="false"> <span class="navbar-toggler-icon"></span> </button>
-            <div class="navbar-collapse collapse" id="dropdown6" >
-              <ul class="navbar-nav m-auto">
 
-                <li class="nav-item"> <Link class="nav-link " to="/">Home</Link> </li>
-                <li class="nav-item"> <Link class="nav-link " to="/movie">Movies</Link> </li>
-                <li class="nav-item"> <Link class="nav-link " to="/">Contact Us</Link> </li>
-              </ul>
-            </div>
-          </div>
-        </nav> */}
       </header>
 
     </>

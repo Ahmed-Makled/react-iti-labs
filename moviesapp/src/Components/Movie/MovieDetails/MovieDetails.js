@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import axiosInstance from "../../../Network/axiosConfig";
-import { updateWishlist } from "../../../Store/Action";
+import { updateWishlist } from "../../../Store/Actions/Wishlist";
 import "./MovieDetails.css";
 
 export default function MovieDetails() {
     const dispatch = useDispatch()
+
     const addToWishlist = () => {
-        // console.log(movie)
+        console.log(movie)
         dispatch(updateWishlist(movie))
     }
     const [movie, setMovie] = useState([]);

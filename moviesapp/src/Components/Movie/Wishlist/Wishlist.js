@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import MovieList from "../MovieList/MovieList";
-import { useDispatch, useSelector } from "react-redux";
-import { removeItem } from "../../../Store/Action";
-
+import { useSelector } from "react-redux";
 export default function Wishlist() {
+  const _movies = useSelector((state) => state.wishlist.movies);
 
-  const _movies = useSelector((state) => state.movies);
   const [loading] = useState(false);
 
 
+  useEffect(() => {
+    console.log(_movies);
 
-  // console.log(_movies);
+  }, [_movies]);
+
   return (
     <>
       <section className="pt-2">

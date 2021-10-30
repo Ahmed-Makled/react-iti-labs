@@ -53,3 +53,10 @@
 .fas {
   color: #fff;
 }
+.lang {
+  color: #fff;
+  cursor: pointer;
+}
+.lang:hover {
+  color: #ff6565;
+}

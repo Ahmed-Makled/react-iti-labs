@@ -1,35 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router";
-
-import { setCounter, updateWishlist, removeItem } from "../../../Store/Action";
+import { updateWishlist, removeItemWishlist } from "../../../Store/Actions/Wishlist";
 import "./MovieItem.css"
 export default function MovieItem({ movie }) {
-  // const movies = useSelector((state) => state.movies);
+  console.log(movie)
 
   const History = useHistory();
   const dispatch = useDispatch();
+
+
+  //change content
   let flag = false;
   if (History.location.pathname === '/wishlist')
     flag = true
   else
     flag = false
 
-  // console.log(History)
-
 
   const addToWishlist = () => {
-    // console.log(movie)
-    // dispatch(setCounter(movies + 1))
+    console.log(movie)
     dispatch(updateWishlist(movie))
   }
-
   const removeItemFromWishList = index => {
 
-    dispatch(removeItem(index)
+    dispatch(removeItemWishlist(index)
     );
   };
+
   return (
     <>
       {
