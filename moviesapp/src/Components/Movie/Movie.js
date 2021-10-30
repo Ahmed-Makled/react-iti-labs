@@ -8,13 +8,13 @@ export default function MovieApp() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [pageCount, setPageCount] = useState(100);
-  const [currentPage, setcurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
 
 
   const urlPage = `/movie/popular?api_key=53d39522fa2be9f28a94db487d6d3fd2&page=${currentPage}`
 
-  const fecthMovies = async () => {
+  const fetchMovies = async () => {
     const res = await axiosInstance.get(urlPage)
     await setMovies(res.data.results);
     await setLoading(false)
@@ -24,17 +24,17 @@ export default function MovieApp() {
 
   useEffect(() => {
 
-    fecthMovies()
+    fetchMovies()
   }, []);
   const handlePageChange = (selectedObject) => {
-    setcurrentPage(selectedObject.selected);
-    fecthMovies();
+    setCurrentPage(selectedObject.selected);
+    fetchMovies();
   };
   return (
 
     <>
-     
-     <section className="pt-2 text-center">
+
+      <section className="pt-2 text-center">
         <div className="container">
           <div className="row ">
             <div className="col-12 ">
@@ -61,8 +61,8 @@ export default function MovieApp() {
 
         </div>
       </section>
-      
-     
+
+
 
     </>
   );

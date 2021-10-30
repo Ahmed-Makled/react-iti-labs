@@ -1,83 +1,101 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router';
-import axiosInstance from '../../../Network/axiosConfig';
-import "./MovieDetails.css"
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router";
+import axiosInstance from "../../../Network/axiosConfig";
+import { updateWishlist } from "../../../Store/Action";
+import "./MovieDetails.css";
 
 export default function MovieDetails() {
+    const dispatch = useDispatch()
+    const addToWishlist = () => {
+        // console.log(movie)
+        dispatch(updateWishlist(movie))
+    }
     const [movie, setMovie] = useState([]);
     const [genres, setGenres] = useState([]);
+    const [productionCompanies, setProductionCompanies] = useState([]);
+    const [totalRevenue, setTotalRevenue] = useState([]);
 
     const params = useParams();
 
-    const url = `/movie/${params.id}?api_key=53d39522fa2be9f28a94db487d6d3fd2`
-    const fecthMovies = async () => {
+    const url = `/movie/${params.id}?api_key=53d39522fa2be9f28a94db487d6d3fd2`;
+    const fetchMovies = async () => {
         try {
-            const res = await axiosInstance.get(url)
-            res.data &&
-                console.log(res.data.genres)
-            setMovie(res.data)
-            setGenres(res.data.genres)
+            const res = await axiosInstance.get(url);
+            let data = res.data
+
+            data &&
+                setMovie(data);
+            setTotalRevenue(data.revenue)
+            setProductionCompanies(nestedDataToString(data.production_companies))
+            setGenres(nestedDataToString(data.genres))
+
+            console.log(data)
+
 
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
+    };
     useEffect(() => {
-
-        fecthMovies();
-
-
+        fetchMovies();
     }, []);
 
-    // const genres =   movie.genres.map(element=>element)
+    function nestedDataToString(nestedData) {
+        let nestedArray = [],
+            resultString;
+        if (nestedData !== undefined) {
+            nestedData.forEach(function (item) {
+                nestedArray.push(item.name);
+            });
+        }
+        resultString = nestedArray.join(', '); // array to string
+        return resultString;
+    };
 
     return (
         <>
-            <div class="pt-5" >
 
 
-                <div class="container" >
+            <section class="py-5">
+                <div class="container">
+                    <div class="row">
 
-                    <div class="row" >
-                        <div class="col-12 m-auto" >
-
-                            <div class="movie_card" >
-                                <div class="info_section">
-                                    <div class="movie_header">
-                                        <img class="locandina" src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-                                        />
-                                        <h5>{movie.title}</h5>
-                                        <h6>{movie.release_date}</h6>
-                                        <span class="minutes">{movie.runtime} min</span>
-                                        {genres.map((ele) => 
-                                            <p class="type">{ele.name}</p>
-                                         
-                                        )}
+                        <div class="col">
+                            <div class="movie-card movie-card--vertical">
+                                <div class="movie-card_img">
+                                    <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt="" />
+                                </div>
+                                <div class="movie-card_content">
+                                    <div class="movie-card_title-section">
+                                        <span class="movie-card_title">{movie.title}</span>
+                                        <span class="meta-data">{movie.tagline}</span>
+                                        <small>{movie.overview}</small>
                                     </div>
-                                    <div class="movie_desc">
-                                        <p class="text">
-                                            {movie.overview}
-                                        </p>
+                                    <div class="card__footer">
+                                        <div className="additional-details py-3">
+                                            <span className="meta-data">{genres}</span>
+                                            <span className="production-list">{productionCompanies}</span>
+                                            <div className="row ">
+                                                <div className="col-6 "> Original Release: <span className="meta-data py-2">{movie.release_date}</span></div>
+                                                <div className="col-6 "> Running Time: <span className="meta-data py-2">{movie.runtime} mins</span> </div>
+                                                <div className="col-6 "> Box Office: <span className="meta-data py-2">${totalRevenue}</span></div>
+                                                <div className="col-6 "> Vote Average: <span className="meta-data py-2">{movie.vote_average}</span></div>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div >
+                                            <span onClick={() => addToWishlist(movie)} className='btn btn-primary btn-sm rounded-0'>Add To Wishlist</span>
+                                        </div>
+
                                     </div>
                                 </div>
-                                <div class="blur_back bright_back" style={{
-                                    backgroundImage: `url( https://image.tmdb.org/t/p/w500/${movie.backdrop_path} )`,
-
-                                }}></div>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
-            </div>
-
-
-
-
+            </section>
         </>
-    )
+    );
 }
-
-

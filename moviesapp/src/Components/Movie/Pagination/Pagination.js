@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
-import Pagination from 'react-bootstrap/Pagination'
-import PageItem from 'react-bootstrap/PageItem'
 
 
-export default function MyPagination({ pageCount,handlePageChange }) {
- 
+
+export default function MyPagination({ pageCount, handlePageChange }) {
+
 
   return (
     <ReactPaginate
@@ -13,9 +12,9 @@ export default function MyPagination({ pageCount,handlePageChange }) {
       nextLabel=">"
       previousLabel="<"
       pageCount={pageCount}
-      marginPagesDisplayed={10}
+      marginPagesDisplayed={4}
       onPageChange={handlePageChange}
-      containerClassName={'pagination'}
+      containerClassName={'pagination justify-content-center'}
       previousLinkClassName={'page-link'}
       breakClassName={'page-link'}
       nextLinkClassName={'page-link'}
